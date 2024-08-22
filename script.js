@@ -4,13 +4,16 @@ const ctaLabel = document.querySelector(".cta__label");
 const ctaForm = document.querySelector(".cta__form");
 const header = document.querySelector(".header");
 
-window.addEventListener("load", function () {
+function customButtonAnimation() {
   if (window.innerWidth >= 1000) {
     btnHero.addEventListener("click", function () {
       btnHero.classList.add("special-animation");
     });
   }
-});
+}
+
+window.addEventListener("load", customButtonAnimation);
+window.addEventListener("resize", customButtonAnimation);
 
 ctaInput.addEventListener("input", function (e) {
   const isEmail = e.target.value.match(
@@ -36,8 +39,8 @@ const scrollOffset = 1;
 let prevScrollpos = window.pageYOffset;
 
 /* monitor when the page is being scrolled */
-window.addEventListener("load", function () {
-  if (window.innerWidth > 1600) {
+function stickyNav() {
+  if (window.innerWidth > 600) {
     window.addEventListener("scroll", () => {
       if (window.scrollY <= 1) {
         header.style.boxShadow = "none";
@@ -60,4 +63,7 @@ window.addEventListener("load", function () {
       }
     });
   }
-});
+}
+
+window.addEventListener("load", stickyNav);
+window.addEventListener("resize", stickyNav);
